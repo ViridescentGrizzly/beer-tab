@@ -4,9 +4,9 @@
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Nate Meier
+  - __Scrum Master__: Andrés Viesca
+  - __Development Team Members__: Steven Wu, Michael Kurrels
 
 ## Table of Contents
 
