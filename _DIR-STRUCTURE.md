@@ -1,9 +1,14 @@
 client
  │   
- ├── index.html
+ ├── public                     - publicly served files
+ │    ├── index.html              - main html file
+ │    └── dist                    - served dependencies
+ │         ├── lib.min.js           - uglified concat-ed .js library file  
+ │         ├── src.min.js           - uglified concat-ed .js app file
+ │         └── styles.min.js        - minified .css file        
  │                                
- ├── styles
- │    └── styles.css       
+ ├── styles                     - non-minified style files
+ │    └── styles.css              - main css file (not bootstrap)
  │          
  ├── lib
  │    └── bower files                
