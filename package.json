@@ -2,7 +2,7 @@
   "name": "beer-tab",
   "version": "0.0.1",
   "description": "beer as social currency",
-  "main": "server.js",
+  "main": "server/server.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/ViridescentGrizzly/beer-tab.git"
