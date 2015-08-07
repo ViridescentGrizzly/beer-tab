@@ -1,0 +1,34 @@
+{
+  "name": "beer-tab",
+  "version": "0.0.1",
+  "homepage": "https://github.com/viestat/beer-tab",
+  "authors": [
+    {
+      "name": "Michael Kurrels",
+      "email": "mjkurrels@gmail.com"
+    },
+    {
+      "name": "Nate Meier",
+      "email": "iemanatemire@gmail.com"
+    },
+    {
+      "name": "Andrés Viesca",
+      "email": "viestat@icloud.com"
+    },
+    {
+      "name": "Steven Wu",
+      "email": "wucommasteven@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3"
+  }
+}
