@@ -3,6 +3,11 @@
   "version": "0.0.1",
   "description": "beer as social currency",
   "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ViridescentGrizzly/beer-tab.git"
+  },
+  "license": "MIT",
   "author": "Viridescent Grizzly",
   "contributors": [{
       "name": "Michael Kurrels",
@@ -17,11 +22,6 @@
       "name": "Steven Wu",
       "email": "wucommasteven@gmail.com"
     }],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/ViridescentGrizzly/beer-tab.git"
-  },
   "devDependencies": {},
   "dependencies": {
     "express": "^4.13.3",
