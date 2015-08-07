@@ -27,11 +27,6 @@
       "email": "wucommasteven@gmail.com"
     }
   ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/ViridescentGrizzly/beer-tab.git"
-  },
   "devDependencies": {},
   "dependencies": {
     "express": "^4.13.3",
