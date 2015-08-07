@@ -3,7 +3,7 @@
 var app = require('./config/server-config.js');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/beer-tab');
 
 var db = mongoose.connection;
 
