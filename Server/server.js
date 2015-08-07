@@ -1,6 +1,6 @@
 // server.js -- initialize node.js server
 // ----------------------------------------------
-var app = require('server-config.js');
+var app = require('./server-config.js');
 
 var port = 3000;
 
