@@ -8,11 +8,13 @@ var app = express();
 
 // Bind middleware to app instance
 app.use(morgan('dev'));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + './public'));
+app.use(express.static('../app'));
+
 
 
 app.get('/', util.checkUser, function (req, res) {
-  // res.sendfile('./public/index.html');
+  res.sendfile('./public/index.html');
 });
 
 app.get('/signup', function (req, res) {
