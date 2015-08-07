@@ -4,17 +4,14 @@ module.exports = function(grunt) {
     
     jshint: {     // Validate .js file syntax
       all: [
-        '*.js',             // server files
-        'app/**/*.js',      // server routing files & database files
-        'config/**/*.js',   // database auth files 
-        'public/**/*.js'    // angular files
+        'server/**/*.js',   // server files
+        'client/**/*.js'    // client files
       ],
       options: {
         force: 'true',
         jshintrc: '.jshintrc',
         ignores: [
-          'public/lib/**/*.js',
-          'public/dist/**/*.js'
+          'client/dist/**/*.js'
         ]
       }
     },
@@ -33,7 +30,7 @@ module.exports = function(grunt) {
         separator: ';', 
       },
       dist: {
-        src: 'public/client/*.js',      // update this
+        src: 'client/*.js',      // update this
         dest: 'public/dist/src.js',
       }
     },
