@@ -1,12 +1,18 @@
 <!doctype html>
-<html>
+<html ng-app="app">
   <head>
     <meta charset="utf-8" />
     <title>Beer-Tab</title>
     <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-route/angular-route.min.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
-  <body ng-app="app">
+  <body >
     <h1>Beer Tab {{3+4}}</h1>
+    <div ng-view></div>
     <script src="../app/app.js"></script>
+    <script src="../app/auth/auth.js"></script>
+
   </body>
 </html>

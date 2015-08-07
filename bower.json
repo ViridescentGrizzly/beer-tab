@@ -1,7 +1,7 @@
 {
   "name": "beer-tab",
   "version": "0.0.1",
-  "homepage": "https://github.com/viestat/beer-tab",
+  "homepage": "https://github.com/ViridescentGrizzly/beer-tab",
   "authors": [
     {
       "name": "Michael Kurrels",
@@ -29,6 +29,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.4.3"
+    "angular": "~1.4.3",
+    "bootstrap": "~3.3.5",
+    "angular-route": "~1.4.3"
   }
 }
