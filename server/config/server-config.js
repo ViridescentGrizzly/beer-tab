@@ -11,8 +11,16 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
 
 
-app.get('*', util.checkUser, function (req, res) {
-  res.sendfile('./public/index.html');
+app.get('/', util.checkUser, function (req, res) {
+  // res.sendfile('./public/index.html');
+});
+
+app.get('/signup', function (req, res) {
+
+});
+
+app.post('/signup', function (req, res) {
+
 });
 
 // Export server app instance
