@@ -1,13 +1,3 @@
-// Helper functions for node server
-
-
-// ------------------------------------------
-//    Routing functions
-// ------------------------------------------
-exports. = function (req, res) {
-  res.redirect('/login');
-};
-
 // ------------------------------------------
 //    Authentication functions
 // ------------------------------------------
@@ -28,3 +18,4 @@ exports.checkUser = function (req, res, next) {
 exports.logout = function (req, res) {
   // Destroy user session
 };
+

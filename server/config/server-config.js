@@ -1,7 +1,7 @@
 // Dependencies
 var express = require('express');
 var morgan = require('morgan');
-var util = require('server-utils.js');
+var util = require('./server-utils.js');
 
 // Initialize express process
 var app = express();
@@ -12,8 +12,8 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', util.checkUser, function (req, res) {
-  res.send('GET -> /');
-};
+  res.send('GET request to: ' + req.url);
+});
 
 // Export server app instance
 module.exports = app;
