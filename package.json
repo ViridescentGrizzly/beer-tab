@@ -1,0 +1,25 @@
+{
+  "name": "beer-tab",
+  "version": "0.0.1",
+  "description": "beer as social currency",
+  "main": "server.js",
+  "author": "Viridescent Grizzly",
+  "contributors": [{
+    "name": "Michael Kurrels",
+    "email": "mjkurrels@gmail.com"
+  },{
+    "name": "Nate Meier",
+    "email": "iemanatemire@gmail.com"
+  },{
+    "name": "Andrés Viesca",
+    "email": "viestat@icloud.com"
+  },{
+    "name": "Steven Wu",
+    "email": "wucommasteven@gmail.com"
+  }],
+  "license": "MIT",
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
+}
