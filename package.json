@@ -9,23 +9,18 @@
   },
   "license": "MIT",
   "author": "Viridescent Grizzly",
-  "contributors": [
-    {
+  "contributors": [{
       "name": "Michael Kurrels",
       "email": "mjkurrels@gmail.com"
-    },
-    {
+    },{
       "name": "Nate Meier",
       "email": "iemanatemire@gmail.com"
-    },
-    {
+    },{
       "name": "Andrés Viesca",
       "email": "viestat@icloud.com"
-    },
-    {
+    },{
       "name": "Steven Wu",
       "email": "wucommasteven@gmail.com"
-    }],
     }
   ],
   "license": "MIT",
