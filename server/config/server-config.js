@@ -11,8 +11,8 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
 
 
-app.get('/', util.checkUser, function (req, res) {
-  res.send('GET request to: ' + req.url);
+app.get('*', util.checkUser, function (req, res) {
+  res.sendfile('./public/index.html');
 });
 
 // Export server app instance
