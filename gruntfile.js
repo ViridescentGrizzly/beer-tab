@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
-    
+    //-----------------------------------------------------
     jshint: {     // Validate .js file syntax
       all: [
         'server/**/*.js',   // server files
@@ -15,7 +15,7 @@ module.exports = function(grunt) {
         ]
       }
     },
-
+    //-----------------------------------------------------
     mochaTest: {  // Run spec tests
       test: {
         options: {
@@ -24,52 +24,74 @@ module.exports = function(grunt) {
         src: ['test/**/*.js']
       }
     },
-
+    //-----------------------------------------------------
     concat: {     // Join .js files
-      options: { 
-        separator: ';', 
+      src: {
+        src: [
+          'client/app/**/*.js'
+        ],
+        dest: 'client/dist/src.js',
       },
-      dist: {
-        src: 'client/*.js',      // update this
-        dest: 'public/dist/src.js',
+      lib: {
+        src: [
+          'bower_components/angular/angular.min.js',
+          'bower_components/angular-route/angular-route.min.js',
+          'bower_components/jquery/dist/jquery.min.js',
+          'bower_components/bootstrap/dist/js/bootstrap.min.js'
+        ],
+        dest: 'client/dist/lib.min.js',
       }
     },
-
+    //-----------------------------------------------------
     uglify: {     // Minify .js files
       options: {
           mangle: false
         },
         js_files: {
           files: {
-            'public/dist/src.min.js': ['public/dist/src.js']
+            'client/dist/src.min.js': ['client/dist/src.js']
           }
         }
     },
-
+    //-----------------------------------------------------
     cssmin: {     // Minify .css files
       target: {
         files: [{
           expand: true,
-          cwd: 'public/',
-          src: ['*.css', '!*.min.css'],
-          dest: 'public/dist/',
+          cwd: 'bower_components/bootstrap/dist/css/',
+          src: ['bootstrap.css', '!*.min.css'],
+          dest: 'client/dist/',
+          ext: '.min.css'
+        }]
+      },
+      stylesheet: {
+        files: [{
+          expand: true,
+          cwd: 'client/styles/',
+          src: ['styles.css', '!*.min.css'],
+          dest: 'client/dist/',
           ext: '.min.css'
         }]
       }
     },
-
+    //-----------------------------------------------------
     nodemon: {    // Start server
       dev: {
-        script: 'server.js'
+        script: 'server/server.js'
       }
     },
-
+    //-----------------------------------------------------
+    shell: {
+      delsrc: {
+        command: 'rm ./client/dist/src.js'
+      }
+    },
+    //-----------------------------------------------------
     watch: {
       files: ['<%= jshint.files %>'],
       tasks: ['jshint']
     }
   });
-
 
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-nodemon');
@@ -104,21 +126,22 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'test',
-    'cssmin',
     'concat',
-    'uglify'
+    'uglify',
+    'shell:delsrc',
+    'cssmin'
   ]);
 
-  grunt.registerTask('upload', function(n) {
-    if(grunt.option('git')) {
-      // add support for git push
-    } else {
-      grunt.task.run([ 'server-dev' ]);
-    }
-  });
+  // grunt.registerTask('upload', function(n) {
+  //   if(grunt.option('git')) {
+  //     // add support for git push
+  //   } else {
+  //     grunt.task.run([ 'server-dev' ]);
+  //   }
+  // });
 
-  grunt.registerTask('deploy', [
-      'build',
-      'upload'
-  ]);
+  // grunt.registerTask('deploy', [
+  //     'build',
+  //     'upload'
+  // ]);
 };
