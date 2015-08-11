@@ -1,5 +1,6 @@
 var request = require('request');
 var bodyParser = require('body-parser');
+var utils = require('./server-utils')
 
 var User = require('./db-config.js');
 
@@ -43,8 +44,11 @@ exports.loginUser = function(req, res) {
 
         user.comparePassword(password, savedPassword, function(err, match) {
           if (match) {
-            // util.createSession(req, res, user);
+            utils.createSession(req, res, user);
+            console.log('logged in');
           } else {
+            // SHOULD PROVIDE USER FEEDBACK
+            // on invalid credentials
             res.redirect('/login');
           }
         });

@@ -10,6 +10,10 @@ angular.module('app', ['beer-tab.auth', 'beer-tab.services', 'ngRoute'])
         templateUrl: 'app/auth/signup.html',
         controller: 'AuthCtrl'
       })
+      .when('/main', {
+        templateUrl: 'app/main/main.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/login'
       });
