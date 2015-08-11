@@ -44,6 +44,7 @@ exports.loginUser = function(req, res) {
         user.comparePassword(password, savedPassword, function(err, match) {
           if (match) {
             // util.createSession(req, res, user);
+            console.log('logged in');
           } else {
             res.redirect('/login');
           }
