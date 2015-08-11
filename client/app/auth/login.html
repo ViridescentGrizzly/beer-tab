@@ -1,15 +1,22 @@
 <div id="login">
   <h1>Login</h1>
-  <form class="form-inline">
+
+  <form class="form-inline" ng-submit="login()">
+
     <div class="form-group">
-      <label class="sr-only" ng-submit='signin()'>username</label>
-      <input type="text" class="form-control" placeholder="username">
+      <label class="sr-only">username</label>
+      <input type="text" class="form-control" placeholder="username" name="username" ng-model='user.username' id="username">
     </div>
+
     <div class="form-group">
       <label class="sr-only">Password</label>
-      <input type="password" class="form-control" placeholder="Password">
+      <input type="password" class="form-control" placeholder="Password" name="password" ng-model='user.password' id="password">
     </div>
+
     <button type="submit" class="btn btn-default">Sign in</button>
-    <a href="#/signup">Sign up here</a>
+  
   </form>
+
+  <a href="#/signup">Sign up here</a>
+
 </div>
