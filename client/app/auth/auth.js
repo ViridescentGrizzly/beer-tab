@@ -1,11 +1,9 @@
 angular.module('beer-tab.auth', [])
-  .controller('AuthCtrl', function ($scope, Auth) { // Come back here if shit doesn't work (look at $location)
+  .controller('AuthCtrl', function ($scope, $location, Auth) { // Come back here if shit doesn't work (look at $location)
     $scope.user = {};
 
-    $scope.signup = function () {
-      console.log('Auth Controller');
-
-      Auth.signup($scope.user)
+    $scope.login = function () {
+      Auth.login($scope.user)
         // .then(function (token) {
         //   $window.localStorage.setItem('com.shortly', token);
         //   $location.path('/links');
@@ -15,5 +13,14 @@ angular.module('beer-tab.auth', [])
         });
     };
 
+    $scope.signup = function () {
+      Auth.signup($scope.user)
+        .then(function () {
+          $location.path('/login');
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    };
 
   });

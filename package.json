@@ -40,6 +40,8 @@
     "mocha": "^2.2.5"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^2.9.34",
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
     "mongodb": "^2.0.40",
