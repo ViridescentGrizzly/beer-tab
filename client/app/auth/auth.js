@@ -4,10 +4,9 @@ angular.module('beer-tab.auth', [])
 
     $scope.login = function () {
       Auth.login($scope.user)
-        // .then(function (token) {
-        //   $window.localStorage.setItem('com.shortly', token);
-        //   $location.path('/links');
-        // })
+        .then(function(token){
+          $location.path('/main');
+        })
         .catch(function (error) {
           console.error(error);
         });

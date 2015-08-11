@@ -35,11 +35,11 @@ app.get('/', util.checkUser, function (req, res) {
 });
 
 app.get('/login', function (req, res) {
-  res.send(200);
+  // res.send(200);
 });
 
 app.get('/signup', function (req, res) {
-  res.send(200);
+  // res.send(200);
 });
 
 app.post('/login', handler.loginUser);
