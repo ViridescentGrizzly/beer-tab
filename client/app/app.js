@@ -1,4 +1,4 @@
-angular.module('app', ['beer-tab.auth', 'beer-tab.services', 'ngRoute'])
+angular.module('app', ['beer-tab.auth', 'beer-tab.main', 'beer-tab.services', 'ngRoute'])
 
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
