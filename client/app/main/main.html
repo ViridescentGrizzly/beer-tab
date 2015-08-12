@@ -1,1 +1,13 @@
 <h1>Main Page</h1>
+
+<div data-ng-controller="MainCtrl">
+    <table ng-table class="table">
+        <tr ng-repeat="user in users">
+            <td data-title="'Name'">{{user.name}}</td>
+            <td data-title="'Beers Owed'">{{user.beers}}</td>
+            <td data-title="'submit'" > 
+              <button ng-hide="user.beers >= 0" ng-click="beered(user.name)">{{text}}!</button>
+           </td>
+        </tr>
+    </table>
+</div>

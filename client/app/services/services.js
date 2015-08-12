@@ -29,4 +29,32 @@ angular.module('beer-tab.services', [])
   };
 
   return authService;
+})
+
+
+.factory('beerPmt', function ($http) {
+  var newIOU = function (user) {
+    return $http({
+      method: 'POST',
+      url: '/tabs',
+      data: user
+    });
+  };
+
+  var recievePmt = function (user) {
+    return $http({
+      method: 'POST',
+      url: '/payed',
+      data: user
+    });
+  };
+
+  return {
+    newIOU: newIOU,
+    recievePmt: recievePmt
+  };
 });
+
+
+
+
