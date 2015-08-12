@@ -1,6 +1,7 @@
 var request = require('request');
 var bodyParser = require('body-parser');
 var utils = require('./server-utils')
+var jwt = require('jwt-simple');
 
 var User = require('./db-config.js');
 
@@ -21,6 +22,8 @@ exports.signupUser = function(req, res) {
             res.send(500, err);
           } else {
             // util.createSession(req, res, newUser);
+            var token = jwt.encode(user, 'secret');
+            res.json({token: token});
             console.log('Account added to database.');
           }
         });
@@ -44,7 +47,9 @@ exports.loginUser = function(req, res) {
 
         user.comparePassword(password, savedPassword, function(err, match) {
           if (match) {
-            utils.createSession(req, res, user);
+            // utils.createSession(req, res, user);
+            var token = jwt.encode(user, 'secret');
+            res.json({token: token});
             console.log('logged in');
           } else {
             // SHOULD PROVIDE USER FEEDBACK
