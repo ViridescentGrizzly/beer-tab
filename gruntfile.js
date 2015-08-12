@@ -88,8 +88,17 @@ module.exports = function(grunt) {
     },
     //-----------------------------------------------------
     watch: {
-      files: ['<%= jshint.files %>'],
-      tasks: ['jshint']
+      scripts: {
+        files: [
+          'server/**/*.js',   // server files
+          'client/**/*.js'    // client files
+        ],
+        tasks: ['build']
+      },
+      css: {
+        files: 'client/styles/*.css',
+        tasks: ['cssmin']
+      }
     }
   });
 
@@ -112,7 +121,7 @@ module.exports = function(grunt) {
     nodemon.stdout.pipe(process.stdout);
     nodemon.stderr.pipe(process.stderr);
 
-    grunt.task.run([ 'watch' ]);
+    grunt.task.run(['watch']);
   });
 
   ////////////////////////////////////////////////////
