@@ -1,6 +1,5 @@
-var request = require('request');
 var bodyParser = require('body-parser');
-var utils = require('./server-utils')
+var request = require('request');
 var jwt = require('jwt-simple');
 
 var User = require('./db-config.js');
@@ -21,17 +20,15 @@ exports.signupUser = function(req, res) {
           if (err) {
             res.send(500, err);
           } else {
-            // util.createSession(req, res, newUser);
-            var token = jwt.encode(user, 'secret');
+            var token = jwt.encode(user, 'argleDavidBargleRosson');
             res.json({token: token});
-            console.log('Account added to database.');
+            console.log('Success: Account added to database.');
           }
         });
       } else {
-        console.log('Account already exists');
-        res.redirect('/signup');
+        console.log('Error: Account already exists');
       }
-    })
+    });
 };
 
 exports.loginUser = function(req, res) {
@@ -41,20 +38,16 @@ exports.loginUser = function(req, res) {
   User.findOne({ username: username })
     .exec(function(err, user) {
       if (!user) {
-        res.redirect('/login');
+        console.log('Error: User not found');
       } else {
         var savedPassword = user.password;
-
         user.comparePassword(password, savedPassword, function(err, match) {
           if (match) {
-            // utils.createSession(req, res, user);
-            var token = jwt.encode(user, 'secret');
+            var token = jwt.encode(user, 'argleDavidBargleRosson');
             res.json({token: token});
-            console.log('logged in');
+            console.log('Success: Logged in');
           } else {
-            // SHOULD PROVIDE USER FEEDBACK
-            // on invalid credentials
-            res.redirect('/login');
+            console.log('Error: Incorrect password');
           }
         });
       }
