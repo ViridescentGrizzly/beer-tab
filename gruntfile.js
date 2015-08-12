@@ -27,9 +27,7 @@ module.exports = function(grunt) {
     //-----------------------------------------------------
     concat: {     // Join .js files
       src: {
-        src: [
-          'client/app/**/*.js'
-        ],
+        src: 'client/app/**/*.js',
         dest: 'client/dist/src.js',
       },
       lib: {

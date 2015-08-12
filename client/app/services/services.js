@@ -1,36 +1,32 @@
 angular.module('beer-tab.services', [])
 
-  .factory('Auth', function ($http) {
-
-    var login = function (user) {
-      return $http({
-        method: 'POST',
-        url: '/login',
-        data: user
-      })
-    };
-
-    var signup = function (user) {
-      return $http({
-        method: 'POST',
-        url: '/signup',
-        data: user
+.factory('AuthService', function ($http, $location, $window) {
+  var authService = {};
+ 
+  authService.login = function (credentials) {
+    return $http
+      .post('/login', credentials)
+      .then(function (resp) {
+        return resp.data.token;
       });
-    };
-
-  // var isAuth = function () {
-  //   return !!$window.localStorage.getItem('com.shortly');
-  // };
-
-  // var signout = function () {
-  //   // $window.localStorage.removeItem('com.shortly');
-  //   $location.path('/signin');
-  // };
-
-  return {
-    login: login,
-    signup: signup
-    // isAuth: isAuth,
-    // signout: signout
   };
+ 
+  authService.signup = function(credentials) {
+    return $http
+      .post('/signup', credentials)
+      .then(function (resp) {
+        return resp.data.token;
+      });
+  };
+
+  authService.isAuth = function () {
+    return !!$window.localStorage.getItem('com.beer-tab');
+  };
+
+  authService.signout = function () {
+    $window.localStorage.removeItem('com.beer-tab');
+    $location.path('/login');
+  };
+
+  return authService;
 });

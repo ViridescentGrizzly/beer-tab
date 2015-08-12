@@ -1,7 +1,7 @@
 // db-config.js -- set up database connection and schema
 // ----------------------------------------------
+var BluebirdPromise = require('bluebird');
 var mongoose = require('mongoose');
-var Promise = require('bluebird');
 var bcrypt = require('bcrypt-nodejs');
 
 mongoose.connect('mongodb://localhost:27017/beer-tab-db');
@@ -14,7 +14,7 @@ var schema = mongoose.Schema ({
 });
 
 schema.pre('save', function(next){
-  var cipher = Promise.promisify(bcrypt.hash);
+  var cipher = BluebirdPromise.promisify(bcrypt.hash);
 
   return cipher(this.password, null, null).bind(this)
     .then(function(hash) {
