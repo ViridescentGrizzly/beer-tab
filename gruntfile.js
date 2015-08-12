@@ -37,6 +37,8 @@ module.exports = function(grunt) {
           'bower_components/angular/angular.min.js',
           'bower_components/angular-route/angular-route.min.js',
           'bower_components/jquery/dist/jquery.min.js',
+          'bower_components/ng-table/dist/ng-table.min.js',
+          'bower_components/angular-ui-router/release/angular-ui-router.min.js',
           'bower_components/bootstrap/dist/js/bootstrap.min.js'
         ],
         dest: 'client/dist/lib.min.js',
@@ -69,6 +71,15 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'client/styles/',
           src: ['styles.css', '!*.min.css'],
+          dest: 'client/dist/',
+          ext: '.min.css'
+        }]
+      },
+      ngTable: {
+        files: [{
+          expand: true,
+          cwd: 'bower_components/ng-table/dist/',
+          src: ['ng-table.css', '!*.min.css'],
           dest: 'client/dist/',
           ext: '.min.css'
         }]
