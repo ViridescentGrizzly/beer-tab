@@ -41,7 +41,7 @@ app.factory('AttachTokens', function ($window) {
 app.run(function ($rootScope, $location, AuthService) {
   $rootScope.$on('$stateChangeStart', function (evt, next, current) {
     if (next.templateUrl !== 'app/auth/signup.html' && !AuthService.isAuth()) {
-      g$location.path('/login');
+      $location.path('/login');
     }
   });
 });
