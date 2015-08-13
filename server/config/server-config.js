@@ -26,7 +26,7 @@ app.get('/signup', function (req, res) {
 
 app.post('/login', handler.loginUser);
 app.post('/signup', handler.signupUser);
-// app.post('/tabs', handler.routeToTabs);
+app.post('/tabs', handler.routeToTabs);
 // app.post('/paid', handler.routeToPaid);
 
 // Export server app instance
