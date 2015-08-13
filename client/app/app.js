@@ -14,11 +14,6 @@ app.config(function ($stateProvider, $httpProvider, $urlRouterProvider) {
       url: '/login',
       templateUrl: 'app/auth/login.html',
       controller: 'AuthCtrl'
-    })
-    .state('signup', {
-      url: '/signup',
-      templateUrl: 'app/auth/signup.html',
-      controller: 'AuthCtrl'
     });
 
   $httpProvider.interceptors.push('AttachTokens');

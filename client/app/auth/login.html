@@ -1,3 +1,4 @@
+<!-- 
 <div id="login">
   <h1>Login</h1>
 
@@ -11,10 +12,6 @@
               ng-minlength= 3  
               ng-maxlength= 20 required>
 
-
-      
-      <!-- tells you if the inputs are of the wrong type -->
-
       <div role="alert">
         <span class="error" ng-show="signin.username.$error.required && signin.username.$dirty">
          Required!</span>
@@ -23,8 +20,6 @@
         <span class="error" ng-show="signin.username.$error.maxlength && signin.username.$dirty">
           Too long!</span>
       </div>
-
-
     </div>
 
     <div class="form-group">
@@ -38,7 +33,6 @@
               ng-minlength= 3 
               ng-maxlength= 20 required>
 
-      <!-- tells you if the inputs are of the wrong type -->
       <div role="alert">
         <span class="error" ng-show="signin.password.$error.required && signin.password.$dirty">
          Required!</span>
@@ -49,8 +43,6 @@
       </div>
     </div>
 
-
-
     <button type="submit" class="btn btn-default" ng-click="login()" 
             ng-disabled="signin.$invalid">Sign in</button>
   </form>
@@ -60,7 +52,7 @@
 </div>
 
 
-<!-- 
+
 
 <label>
        User name:
@@ -81,4 +73,92 @@
       <span class="error" ng-show="myForm.lastName.$error.maxlength">
         Too long!</span>
     </div>
- -->
+
+</div>
+-->
+
+
+<div id="login-form" ng-controller="AuthCtrl">
+
+  <input type="radio" checked id="login" name="switch" class="hide">
+  <input type="radio" id="signup" name="switch" class="hide">
+
+  <div>
+    <ul class="form-header">
+      <li><label for="login"><i class="fa fa-lock"></i> LOGIN<label for="login"></li>
+      <li><label for="signup"><i class="fa fa-beer"></i> SIGN UP</label></li>
+    </ul>
+  </div>
+
+  <div class="section-out">
+    <section class="login-section">
+      <div class="login">
+        <form ng-submit="login()" name="login" novalidate>
+          <ul class="ul-list">
+            <li><input type="text" required class="input" placeholder="Username" ng-model='user.username' ng-minlength='3' ng-maxlength='20'/><span class="icon"><i class="fa fa-user"></i></span></li>
+            
+<!--             <div role="alert">
+              <span class="error" ng-show="login.username.$error.required && login.username.$dirty">Required!</span>
+              <span class="error" ng-show="login.username.$error.minlength && login.username.$dirty">Too short!</span>
+              <span class="error" ng-show="login.username.$error.maxlength && login.username.$dirty">Too long!</span>
+            </div> -->
+            
+
+            <li><input type="password" required class="input" placeholder="Password" ng-model='user.password' ng-minlength='3' ng-maxlength='20'/><span class="icon"><i class="fa fa-lock"></i></span></li>
+            
+<!--             <div role="alert">
+              <span class="error" ng-show="login.password.$error.required && login.password.$dirty">Required!</span>
+              <span class="error" ng-show="login.password.$error.minlength && login.password.$dirty">Too short!</span>
+              <span class="error" ng-show="login.password.$error.maxlength && login.password.$dirty">Too long!</span>
+            </div> -->
+            
+            <li><span class="remember"><input type="checkbox" id="check"> <label for="check">Remember Me</label></span><span class="remember"><a href="">Forget Password</a></span></li>
+            <li><input type="submit" value="SIGN IN" class="btn" ng-disabled="login.$invalid"></li>
+          </ul>
+        </form>
+      </div>
+
+      <div class="social-login">Or sign in with &nbsp;
+        <a href="" class="fb"><i class="fa fa-facebook"></i></a>
+        <a href="" class="tw"><i class="fa fa-twitter"></i></a>
+        <a href="" class="gp"><i class="fa fa-google-plus"></i></a>
+        <a href="" class="linked-in"><i class="fa fa-linkedin"></i></a>
+      </div>
+    </section>
+
+    <section class="signup-section">
+      <div class="login">
+        <form ng-submit="signup()" name="signup" novalidate>
+          <ul class="ul-list">
+            <li><input type="text" required class="input" placeholder="Username" ng-model='user.username' ng-minlength='3' ng-maxlength='20'/><span class="icon"><i class="fa fa-user"></i></span></li>
+            <!--
+            <div role="alert">
+              <span class="error" ng-show="signup.user.username.$error.required && signup.user.username.$dirty">Required!</span>
+              <span class="error" ng-show="signup.user.username.$error.minlength && signup.user.username.$dirty">Too short!</span>
+              <span class="error" ng-show="signup.user.username.$error.maxlength && signup.user.username.$dirty">Too long!</span>
+            </div>
+            -->
+            <li><input type="password" required class="input" placeholder="Password" ng-model='user.password' ng-minlength='3' ng-maxlength='20'/><span class="icon"><i class="fa fa-lock"></i></span></li>
+            <!--
+            <div role="alert">
+              <span class="error" ng-show="signup.user.password.$error.required && signup.user.password.$dirty">Required!</span>
+              <span class="error" ng-show="signup.user.password.$error.minlength && signup.user.password.$dirty">Too short!</span>
+              <span class="error" ng-show="signup.user.password.$error.maxlength && signup.user.password.$dirty">Too long!</span>
+            </div>
+            -->
+            <li><input type="checkbox" id="check1" ng-model="unchecked"> <label for="check1">I am over 21 years of age.</label></li>
+            <li><input type="submit" value="SIGN UP" class="btn" ng-disabled="!unchecked || signup.$invalid"></li>
+          </ul>
+
+        </form>
+      </div>
+
+      <div class="social-login">Or sign up with &nbsp;
+        <a href="" class="fb"><i class="fa fa-facebook"></i></a>
+        <a href="" class="tw"><i class="fa fa-twitter"></i></a>
+        <a href="" class="gp"><i class="fa fa-google-plus"></i></a>
+        <a href="" class="linked-in"><i class="fa fa-linkedin"></i></a>
+      </div>
+    </section>
+  </div>
+</div>

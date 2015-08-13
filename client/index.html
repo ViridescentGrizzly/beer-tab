@@ -2,17 +2,41 @@
 <html ng-app="app">
   <head>
     <meta charset="utf-8" />
-    <title>Beer-Tab</title>
+    <title>Beer Tab</title>
     <script src="dist/lib.min.js"></script>
     <script src="dist/src.min.js"></script>
     <link href="dist/bootstrap.min.css" rel="stylesheet">
     <link href="dist/styles.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel='stylesheet'>
   </head>
 
   <body>
-    <h1>Beer Tab {{3+4}}</h1>
-    <div ui-view></div>
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="" class="navbar-brand">BEER TAB</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-controller="AuthCtrl">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="">About</a></li>
+                    <li ng-click="signout()"><a href="">Log Out</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav>
+    
+    <div ui-view>
+      <!-- ANGULAR VIEWS -->
+    </div>
 
   </body>
-
 </html>
