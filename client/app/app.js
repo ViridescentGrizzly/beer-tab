@@ -1,5 +1,5 @@
 
-var app = angular.module('app', ['beer-tab.auth', 'beer-tab.main', 'beer-tab.services', 'ui.router', 'ngTable'])
+var app = angular.module('app', ['beer-tab.auth', 'beer-tab.main', 'beer-tab.services', 'ui.router'])
 
 app.config(function ($stateProvider, $httpProvider, $urlRouterProvider) {
 
