@@ -1,13 +1,23 @@
-<h1>Main Page</h1>
 
-<div data-ng-controller="MainCtrl">
-    <table ng-table class="table">
-        <tr ng-repeat="user in users">
-            <td data-title="'Name'">{{user.name}}</td>
-            <td data-title="'Beers Owed'">{{user.beers}}</td>
-            <td data-title="'submit'" > 
-              <button ng-hide="user.beers >= 0" ng-click="beered(user.name)">{{text}}!</button>
-           </td>
-        </tr>
-    </table>
+<div class='container' data-ng-controller="MainCtrl"> 
+
+  <table ng-table class="table">
+      <tr ng-repeat="user in users">
+          <td class="username-col" data-title="'Username'">{{user.name}}</td>
+          <td class="beer-tab-col" data-title="'Tab'">{{user.beers}}</td>
+          <td class="pay-btn-col"> 
+            <button class="pay-btn" ng-hide="user.beers >= 0" ng-click="beered(user.name)">{{text}}</button>
+         </td>
+      </tr>
+  </table>
+
+  <div class="login">
+    <form ng-submit="sendBeer()" name="send-beer" novalidate>
+      <ul class="ul-list">
+        <li class='center'>
+          <div><input type="text" class="send-beer input" placeholder="I owe a beer to..." ng-model="user.username" ng-minlength="3" ng-maxlength="20" required><span class="icon"><i class="fa fa-user"></i></span></li>
+        <li><input type="submit" value="SEND BEER" class="btn btn2" ng-disabled="login.$invalid" disabled="disabled"></li>
+      </ul>
+    </form>
+  </div>
 </div>
