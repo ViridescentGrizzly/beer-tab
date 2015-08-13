@@ -4,8 +4,6 @@ var jwt = require('jwt-simple');
 
 var User = require('./db-config.js');
 
-var globalToken; 
-
 var tokenize = function(user, callback){
   var token = jwt.encode(user, 'argleDavidBargleRosson');
   callback(token);
@@ -34,7 +32,6 @@ exports.signupUser = function(req, res) {
             tokenize(user, function(t){
               var jsonToken = {token: t};
               res.json(jsonToken);
-              globalToken = jsonToken;
             });
             console.log('Success: Account added to database.');
             res.status(201).end();
@@ -64,7 +61,6 @@ exports.loginUser = function(req, res) {
             tokenize(user, function(t){
               var jsonToken = {token: t};
               res.json(jsonToken);
-              globalToken = jsonToken;
             });
 
             console.log('Success: Logged in');
