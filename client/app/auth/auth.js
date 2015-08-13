@@ -5,15 +5,16 @@ angular.module('beer-tab.auth', [])
   $scope.user = {};
 
   $scope.logIn = function () {
-      AuthService.login($scope.user)
-        .then(function (token) {
-          $window.localStorage.setItem('com.beer-tab', token);
-          $location.path('/main');
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
-    };
+    $window.username = $scope.user.username;
+    AuthService.login($scope.user)
+      .then(function (token) {
+        $window.localStorage.setItem('com.beer-tab', token);
+        $location.path('/main');
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  };
 
   $scope.signUp = function () {
     AuthService.signup($scope.user)
