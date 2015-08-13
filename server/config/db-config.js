@@ -6,6 +6,7 @@ var bcrypt = require('bcrypt-nodejs');
 
 mongoose.connect('mongodb://localhost:27017/beer-tab-db');
 
+// Define user network schema
 var networkSchema = mongoose.Schema ({
   username: String,
   beersOwed: Number
@@ -16,10 +17,9 @@ var schema = mongoose.Schema ({
   username: { type: String, index: { unique: true } },
   password: String,
   network: [networkSchema]
-  // network: mongoose.Schema.Types.Mixed
 });
 
-
+// Hash pashword before saving to database
 schema.pre('save', function(next){
   var cipher = BluebirdPromise.promisify(bcrypt.hash);
 

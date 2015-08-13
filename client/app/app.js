@@ -16,32 +16,32 @@ app.config(function ($stateProvider, $httpProvider, $urlRouterProvider) {
       controller: 'AuthCtrl'
     });
 
-  // $httpProvider.interceptors.push('AttachTokens');
+  $httpProvider.interceptors.push('AttachTokens');
 });
 
-// app.factory('AttachTokens', function ($window) {
-//   // this is an $httpInterceptor
-//   // its job is to stop all out going request
-//   // then look in local storage and find the user's token
-//   // then add it to the header so the server can validate the request
-//   var attach = {
-//     request: function (object) {
-//       var jwt = $window.localStorage.getItem('com.beer-tab');
-//       if (jwt) {
-//         object.headers['x-access-token'] = jwt;
-//       }
-//       object.headers['Allow-Control-Allow-Origin'] = '*';
-//       return object;
-//     }
-//   };
-//   return attach;
-// });
+app.factory('AttachTokens', function ($window) {
+  // this is an $httpInterceptor
+  // its job is to stop all out going request
+  // then look in local storage and find the user's token
+  // then add it to the header so the server can validate the request
+  var attach = {
+    request: function (object) {
+      var jwt = $window.localStorage.getItem('com.beer-tab');
+      if (jwt) {
+        object.headers['x-access-token'] = jwt;
+      }
+      object.headers['Allow-Control-Allow-Origin'] = '*';
+      return object;
+    }
+  };
+  return attach;
+});
 
 // RUN service that authenticates all changes to url path
-// app.run(function ($rootScope, $location, AuthService) {
-//   $rootScope.$on('$stateChangeStart', function (evt, next, current) {
-//     if (next.templateUrl !== 'app/auth/signup.html' && !AuthService.isAuth()) {
-//       $location.path('/login');
-//     }
-//   });
-// });
+app.run(function ($rootScope, $location, AuthService) {
+  $rootScope.$on('$stateChangeStart', function (evt, next, current) {
+    if (next.templateUrl !== 'app/auth/signup.html' && !AuthService.isAuth()) {
+      g$location.path('/login');
+    }
+  });
+});
