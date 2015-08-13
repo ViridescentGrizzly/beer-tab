@@ -72,9 +72,9 @@ exports.toTabs = function(req, res){
         res.status(500).end();
       } else {
         // if user exists, check the session's username
-        var token = jwt.encode(user, 'argleDavidBargleRosson');
-        var decoded = jwt.decode(token, 'argleDavidBargleRosson');
-        res.status(201).send(decoded).end();
+        // var token = jwt.encode(user, 'argleDavidBargleRosson');
+        // var decoded = jwt.decode(token, 'argleDavidBargleRosson');
+        res.status(201).send(user).end();
       }
     });
 };
@@ -89,9 +89,9 @@ exports.toPaid = function(req, res){
         res.status(500).end();  
       } else {
         // if user exists, check the session's username
-        var token = jwt.encode(user, 'argleDavidBargleRosson');
-        var decoded = jwt.decode(token, 'argleDavidBargleRosson');
-        res.status(201).send(decoded).end();
+        // var token = jwt.encode(user, 'argleDavidBargleRosson');
+        // var decoded = jwt.decode(token, 'argleDavidBargleRosson');
+        res.status(201).send(user).end();
       }
     });
 };
