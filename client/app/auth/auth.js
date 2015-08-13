@@ -4,7 +4,7 @@ angular.module('beer-tab.auth', [])
   
   $scope.user = {};
 
-  $scope.login = function () {
+  $scope.logIn = function () {
       AuthService.login($scope.user)
         .then(function (token) {
           $window.localStorage.setItem('com.beer-tab', token);
@@ -15,7 +15,7 @@ angular.module('beer-tab.auth', [])
         });
     };
 
-  $scope.signup = function () {
+  $scope.signUp = function () {
     AuthService.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.beer-tab', token);

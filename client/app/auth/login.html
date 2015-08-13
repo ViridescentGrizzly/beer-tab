@@ -93,7 +93,7 @@
   <div class="section-out">
     <section class="login-section">
       <div class="login">
-        <form ng-submit="login()" name="login" novalidate>
+        <form ng-submit="logIn()" name="login" novalidate>
           <ul class="ul-list">
             <li><input type="text" required class="input" placeholder="Username" ng-model='user.username' ng-minlength='3' ng-maxlength='20'/><span class="icon"><i class="fa fa-user"></i></span></li>
             
@@ -128,7 +128,7 @@
 
     <section class="signup-section">
       <div class="login">
-        <form ng-submit="signup()" name="signup" novalidate>
+        <form ng-submit="signUp()" name="signup" novalidate>
           <ul class="ul-list">
             <li><input type="text" required class="input" placeholder="Username" ng-model='user.username' ng-minlength='3' ng-maxlength='20'/><span class="icon"><i class="fa fa-user"></i></span></li>
             <!--
