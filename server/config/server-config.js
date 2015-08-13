@@ -20,10 +20,6 @@ app.get('/login', function (req, res) {
   res.send();
 });
 
-app.get('/signup', function (req, res) {
-  res.send();
-});
-
 app.post('/login', handler.loginUser);
 app.post('/signup', handler.signupUser);
 app.post('/tabs', handler.routeToTabs);

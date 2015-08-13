@@ -96,16 +96,24 @@
         <form ng-submit="login()" name="login">
           <ul class="ul-list">
             <li><input type="text" required class="input" placeholder="Username" ng-model='user.username' ng-minlength='3' ng-maxlength='20'/><span class="icon"><i class="fa fa-user"></i></span></li>
+            
+            <div role="alert">
+              <span class="error" ng-show="login.user.username.$error.required && login.user.username.$dirty">Required!</span>
+              <span class="error" ng-show="login.user.username.$error.minlength && login.user.username.$dirty">Too short!</span>
+              <span class="error" ng-show="login.user.username.$error.maxlength && login.user.username.$dirty">Too long!</span>
+            </div>
+            
             <li><input type="password" required class="input" placeholder="Password" ng-model='user.password' ng-minlength='3' ng-maxlength='20'/><span class="icon"><i class="fa fa-lock"></i></span></li>
+            
+            <div role="alert">
+              <span class="error" ng-show="login.user.password.$error.required && login.user.password.$dirty">Required!</span>
+              <span class="error" ng-show="login.user.password.$error.minlength && login.user.password.$dirty">Too short!</span>
+              <span class="error" ng-show="login.user.password.$error.maxlength && login.user.password.$dirty">Too long!</span>
+            </div>
+            
             <li><span class="remember"><input type="checkbox" id="check"> <label for="check">Remember Me</label></span><span class="remember"><a href="">Forget Password</a></span></li>
             <li><input type="submit" value="SIGN IN" class="btn" ng-disabled="login.$invalid"></li>
           </ul>
-
-          <div role="alert">
-            <span class="error" ng-show="login.username.$error.required && login.username.$dirty">Required!</span>
-            <span class="error" ng-show="login.username.$error.minlength && login.username.$dirty">Too short!</span>
-            <span class="error" ng-show="login.username.$error.maxlength && login.username.$dirty">Too long!</span>
-          </div>
         </form>
       </div>
 
@@ -122,16 +130,23 @@
         <form ng-submit="signup()" name="signup">
           <ul class="ul-list">
             <li><input type="text" required class="input" placeholder="Username" ng-model='user.username' ng-minlength='3' ng-maxlength='20'/><span class="icon"><i class="fa fa-user"></i></span></li>
+            <div role="alert">
+              <span class="error" ng-show="signup.user.username.$error.required && signup.user.username.$dirty">Required!</span>
+              <span class="error" ng-show="signup.user.username.$error.minlength && signup.user.username.$dirty">Too short!</span>
+              <span class="error" ng-show="signup.user.username.$error.maxlength && signup.user.username.$dirty">Too long!</span>
+            </div>
+
             <li><input type="password" required class="input" placeholder="Password" ng-model='user.password' ng-minlength='3' ng-maxlength='20'/><span class="icon"><i class="fa fa-lock"></i></span></li>
+            <div role="alert">
+              <span class="error" ng-show="signup.user.password.$error.required && signup.user.password.$dirty">Required!</span>
+              <span class="error" ng-show="signup.user.password.$error.minlength && signup.user.password.$dirty">Too short!</span>
+              <span class="error" ng-show="signup.user.password.$error.maxlength && signup.user.password.$dirty">Too long!</span>
+            </div>
+
             <li><input type="checkbox" id="check1" ng-model="unchecked"> <label for="check1">I am over 21 years of age.</label></li>
             <li><input type="submit" value="SIGN UP" class="btn" ng-disabled="signup.$invalid && !unchecked"></li>
           </ul>
 
-          <div role="alert">
-            <span class="error" ng-show="signup.username.$error.required && signup.username.$dirty">Required!</span>
-            <span class="error" ng-show="signup.username.$error.minlength && signup.username.$dirty">Too short!</span>
-            <span class="error" ng-show="signup.username.$error.maxlength && signup.username.$dirty">Too long!</span>
-          </div>
         </form>
       </div>
 
