@@ -1,4 +1,4 @@
-angular.module('beer-tab.main', [])
+angular.module('beer-tab.main', ['ngTable'])
   .controller('MainCtrl', function ($scope, beerPmt) { // Come back here if shit doesn't work (look at $location)
     $scope.users = [{name: "david", beers: -1},
                     {name: "rosson", beers: 43},
