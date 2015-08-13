@@ -53,3 +53,40 @@ exports.loginUser = function(req, res) {
       }
   });
 };
+
+
+exports.routeToTabs = function(req, res){
+  var username = req.body.username;
+
+  User.findOne({ username: username })
+    .exec(function(err, user) {
+      if(!user) {
+        console.log('attempted to route to tabs, but person not found!');
+        // res.redirect()
+      } else {
+        // if user exists
+        // somehow check the session's username
+        // 
+      }
+
+    });
+};
+
+exports.routeToPaid = function(req, res){
+  var username = req.body.username;
+
+  User.findOne({ username: username })
+    .exec(function(err, user){
+      if(!user){
+        console.log('attempted to route to paid, but person not found!');
+        // res.redirect()
+      } else {
+        // if user exists
+        // somehow check the session's username
+        // 
+      }
+
+    });
+};
+
+
