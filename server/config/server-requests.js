@@ -118,7 +118,7 @@ exports.toPaid = function(req, res){
   var decoded = jwt.decode(req.body.token, 'argleDavidBargleRosson');
   var receiver = decoded.username;
   //This query finds the sender in the db
-  User.findOne({ username: sender })
+  User.findOne({ username: sender }) 
     .exec(function(err, user){
       if(!user){
         console.log('attempted to route to paid, but person not found!');
