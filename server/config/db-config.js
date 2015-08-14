@@ -6,12 +6,6 @@ var bcrypt = require('bcrypt-nodejs');
 
 mongoose.connect('mongodb://localhost:27017/beer-tab-db');
 
-// Define user network schema
-var networkSchema = mongoose.Schema ({
-  username: String,
-  beersOwed: Number
-});
-
 // Define user schema
 var schema = mongoose.Schema ({
   username: { type: String, index: { unique: true } },
