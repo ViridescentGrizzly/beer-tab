@@ -1,6 +1,7 @@
 var main = angular.module('beer-tab.main', ['beer-tab.services', 'angular-jwt', 'ngTable']);
 
-main.controller('MainCtrl', function ($scope, $window, beerPmt, jwtHelper) {
+
+main.controller('MainCtrl', function ($scope, $window, beerPmt, jwtHelper, AuthService) {
 
   // Retrieve token from localStorage
   $scope.jwt = $window.localStorage.getItem('com.beer-tab');
@@ -13,13 +14,14 @@ main.controller('MainCtrl', function ($scope, $window, beerPmt, jwtHelper) {
 
   // Rename this function to something that better describes what it does
   $scope.beered = function (user) {
-    beerPmt.recievePmt(user);
-    //.then(function () {
-      $scope.text = 'Clicked';
-    //});
+    if(AuthService.isAuth()) {
+      beerPmt.recievePmt(user);
+    }
   };
 
   $scope.sendBeer = function (user) {
-    beerPmt.newIOU($scope.toUser);
+    if(AuthService.isAuth()) {
+      beerPmt.newIOU($scope.toUser);
+    }
   };
 });
