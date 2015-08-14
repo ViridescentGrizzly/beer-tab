@@ -8,7 +8,8 @@
           <td class="username-col" data-title="'Username'">{{user}}</td>
           <td class="beer-tab-col" data-title="'Tab'">{{tab}}</td>
           <td class="pay-btn-col"> 
-            <button class="pay-btn" ng-hide="tab >= 0" ng-click="beered(user.name)">Pay Tab</button>
+            <button class="pay-btn" ng-hide="tab <= 0" ng-click="beered(user.name)">Recieve</button>
+            <button class="pay-btn" ng-hide="tab > 0" ng-click="beered(user.name)">Owe</button>
          </td>
       </tr>
   </table>
