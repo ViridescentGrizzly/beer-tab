@@ -74,12 +74,14 @@ exports.toTabs = function(req, res){
         console.log('attempted to route to tabs, but person not found!');
         res.status(500).end();
       } else {
+
+              // if user exists, check the session's username
               // var token = jwt.encode(user, 'argleDavidBargleRosson');
               // var decoded = jwt.decode(token, 'argleDavidBargleRosson');
-              
-              // if user exists, check the session's username
+
+
+          //if the receiver is on the network of the sender, the number is incremented 
           if(user.network.hasOwnProperty(reciever)){
-              //if the receiver is on the network of the sender, the number is incremented 
             user.network[reciever]++;
           } else {
             //otherwise, we create the relationship
@@ -110,19 +112,39 @@ exports.toTabs = function(req, res){
 };
 
 exports.toPaid = function(req, res){
-  console.log('body', req.body);
-  var username = req.body.username;
-
-  User.findOne({ username: username })
+   //Here we distribute the data we received from the request
+  var sender = req.body.user;
+   //since we got a token we need to decode it first
+  var decoded = jwt.decode(req.body.token, 'argleDavidBargleRosson');
+  var receiver = decoded.username;
+  //This query finds the sender in the db
+  User.findOne({ username: sender })
     .exec(function(err, user){
       if(!user){
         console.log('attempted to route to paid, but person not found!');
         res.status(500).end();  
       } else {
-        // if user exists, check the session's username
-        // var token = jwt.encode(user, 'argleDavidBargleRosson');
-        // var decoded = jwt.decode(token, 'argleDavidBargleRosson');
-        res.status(201).send(user).end();
+          if (!user.network[receiver]) {
+            console.log('attempted to route to paid, but person not found!');
+            res.status(500).end();
+          } else {
+            user.network[receiver]--;
+            //This query finds the receiver in the db
+            User.findOne({username: receiver})
+              .exec(function(err, user) {
+                if(err){
+                  res.status(500).end();
+                } else {
+                  if(user){
+                    user.network[sender]++;
+                    res.status(201).send(user).end();
+                  } 
+                }
+
+              });
+          } 
+        
+        // res.status(201).send(user).end();
       }
     });
 };
