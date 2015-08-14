@@ -63,9 +63,9 @@ exports.loginUser = function(req, res) {
 
 exports.toTabs = function(req, res){
   console.log('body', req.body);
-  var username = req.body.username;
-
-  User.findOne({ username: username })
+  var sender = req.body.sender;
+  var reciever = req.body.reciever;
+  User.findOne({ username: sender })
     .exec(function(err, user) {
       if(!user) {
         console.log('attempted to route to tabs, but person not found!');
@@ -74,9 +74,35 @@ exports.toTabs = function(req, res){
         // if user exists, check the session's username
         // var token = jwt.encode(user, 'argleDavidBargleRosson');
         // var decoded = jwt.decode(token, 'argleDavidBargleRosson');
+        if(user.network.hasOwnProperty(reciever)){
+          user.network[reciever]++;
+        } else {
+          user.network[reciever] = 1;
+        }
+
         res.status(201).send(user).end();
       }
     });
+
+
+  User.findOne({ username: reciever })
+    .exec(function(err, user) {
+      if(!user) {
+        console.log('attempted to route to tabs, but person not found!');
+        res.status(500).end();
+      } else {
+        // if user exists, check the session's username
+        // var token = jwt.encode(user, 'argleDavidBargleRosson');
+        // var decoded = jwt.decode(token, 'argleDavidBargleRosson');
+        if(user.network.hasOwnProperty(sender)){
+          user.network[sender]--;
+        } else {
+          user.network[sender] = -1;
+        }
+
+        res.status(201).send(user).end();
+      }
+    });  
 };
 
 exports.toPaid = function(req, res){
