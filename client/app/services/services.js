@@ -7,6 +7,7 @@ angular.module('beer-tab.services', [])
     return $http
       .post('/login', credentials)
       .then(function (resp) {
+        console.log("TOKEN:", resp.data.token);
         return resp.data.token;
       });
   };
@@ -53,6 +54,10 @@ angular.module('beer-tab.services', [])
     newIOU: newIOU,
     recievePmt: recievePmt
   };
+});
+
+.factory('fetchUserNetwork', function ($http) {
+  var 
 });
 
 

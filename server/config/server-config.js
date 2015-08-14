@@ -20,6 +20,8 @@ app.get('/login', function (req, res) {
   res.send();
 });
 
+app.get('/getUserNetwork', handler.getUserNetwork);
+
 app.post('/login', handler.loginUser);
 app.post('/signup', handler.signupUser);
 app.post('/tabs', handler.toTabs);
