@@ -18,4 +18,8 @@ main.controller('MainCtrl', function ($scope, $window, beerPmt, jwtHelper) {
       $scope.text = 'Clicked';
     //});
   };
+
+  $scope.sendBeer = function (user) {
+    beerPmt.newIOU($scope.toUser);
+  };
 });
