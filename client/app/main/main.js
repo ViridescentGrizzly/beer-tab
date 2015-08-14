@@ -16,9 +16,7 @@ main.controller('MainCtrl', function ($scope, $window, beerPmt, jwtHelper, AuthS
     console.log('sendBeer called', user);
     if(AuthService.isAuth()) {
       var user = beerPmt.newIOU(user);
-      $scope.network = user.network;
-
-      console.log(user.network);
+      $scope.network = user;
     }
   };
 
