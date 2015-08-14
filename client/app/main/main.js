@@ -1,6 +1,6 @@
 var main = angular.module('beer-tab.main', ['beer-tab.services', 'angular-jwt', 'ngTable']);
 
-main.controller('MainCtrl', function ($scope, $window, beerPmt, jwtHelper) { // Come back here if shit doesn't work (look at $location)
+main.controller('MainCtrl', function ($scope, $window, beerPmt, jwtHelper) {
 
   // Retrieve token from localStorage
   $scope.jwt = $window.localStorage.getItem('com.beer-tab');
@@ -18,5 +18,4 @@ main.controller('MainCtrl', function ($scope, $window, beerPmt, jwtHelper) { // 
       $scope.text = 'Clicked';
     //});
   };
-
 });

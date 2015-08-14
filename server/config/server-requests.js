@@ -40,7 +40,6 @@ exports.loginUser = function(req, res) {
   User.findOne({ username: username })
     .exec(function(err, user) {
 
-      console.log("USER:", user)
       if (!user) {
         res.status(418).end();
       } else {
@@ -60,6 +59,7 @@ exports.loginUser = function(req, res) {
       }
   });
 };
+
 
 exports.toTabs = function(req, res){
   //Here we distribute the data we received from the request

@@ -1,9 +1,8 @@
 angular.module('beer-tab.auth', [])
 
-.controller('AuthCtrl', function ($scope, $window, $location, AuthService) {
+.controller('AuthCtrl', function ($scope, $rootScope, $window, $location, AuthService) {
   
   $scope.user = {};
-
   $scope.logIn = function () {
     $window.username = $scope.user.username;
     AuthService.login($scope.user)
