@@ -77,22 +77,16 @@ exports.toTabs = function(req, res){
         res.status(500).end();
       } else {
 
-              // if user exists, check the session's username
-              // var token = jwt.encode(user, 'argleDavidBargleRosson');
-              // var decoded = jwt.decode(token, 'argleDavidBargleRosson');
-
-
           //if the receiver is on the network of the sender, the number is incremented 
           if(user.network.hasOwnProperty(reciever)){
             user.network[reciever]++;
-            //here we assign the entire user object to teh temp variable
-            temp = user;
 
           } else {
             //otherwise, we create the relationship
             user.network[reciever] = 1;
-            temp = user;
           }
+          //here we assign the entire user object to teh temp variable
+          temp = user;
           //We use the update method, here we replace the old
           //network object, with the one insede temp
           User.update({_id: user._id}, {$set: {network: temp.network}}, function(err){
@@ -109,12 +103,12 @@ exports.toTabs = function(req, res){
                   //instead of incrementing, the number decreases
                   if(user.network.hasOwnProperty(sender)){
                     user.network[sender]--;
-                    temp = user;
                   } else {
                     //the default in this case is negative
                     user.network[sender] = -1;
-                    temp = user;
                   }
+                  //here we assign the entire user object to teh temp variable
+                  temp = user;
                   //We use the update method, here we replace the old
                   //network object, with the one insede temp
                   User.update({_id: user._id}, {$set: {network: temp.network}}, function(err){
@@ -147,8 +141,9 @@ exports.toPaid = function(req, res){
       } else {
         if(user.network.hasOwnProperty(reciever)){
           user.network[receiver]--;
-          temp = user;
         }
+        //here we assign the entire user object to teh temp variable
+        temp = user;
         //We use the update method, here we replace the old
         //network object, with the one insede temp
         User.update({_id: user._id}, {$set: {network: temp.network}}, function(err){
@@ -162,19 +157,16 @@ exports.toPaid = function(req, res){
               } else {
                 if(user.network.hasOwnProperty(sender)){
                   user.network[sender]++;
-                  temp = user;
                 }
+                //here we assign the entire user object to teh temp variable
+                temp = user;
                 //We use the update method, here we replace the old
                 //network object, with the one insede temp
                 User.update({_id: user._id}, {$set: {network: temp.network}}, function(err){
                     if (err) return err;
                   });
-
               }
-
             });
       }
     });
 };
-
-
