@@ -12,16 +12,13 @@ main.controller('MainCtrl', function ($scope, $window, beerPmt, jwtHelper, AuthS
   // Pull username from token to display on main page
   $scope.user = $scope.decodedJwt.username;
 
-  // Rename this function to something that better describes what it does
-  $scope.beered = function (user) {
-    if(AuthService.isAuth()) {
-      beerPmt.recievePmt(user);
-    }
-  };
+  console.log('$scope.network', $scope.network, '$scope.user', $scope.user);
+
 
   $scope.sendBeer = function (user) {
+    console.log('sendBeer called', user);
     if(AuthService.isAuth()) {
-      beerPmt.newIOU($scope.toUser);
+      beerPmt.newIOU(user);
     }
   };
 });
