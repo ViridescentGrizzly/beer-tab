@@ -34,25 +34,29 @@ angular.module('beer-tab.services', [])
 
 
 .factory('beerPmt', function ($window, $http) {
+  
   var newIOU = function (user) {
     return $http({
       method: 'POST',
       url: '/tabs',
       data: {token: $window.localStorage.getItem('com.beer-tab'), user: user}
+    })
+    .then(function (resp) {
+        return resp.data.network;
     });
   };
 
-  var recievePmt = function (user) {
-    return $http({
-      method: 'POST',
-      url: '/paid',
-      data: {token: $window.localStorage.getItem('com.beer-tab'), user: user}
-    });
-  };
+  // var recievePmt = function (user) {
+  //   return $http({
+  //     method: 'POST',
+  //     url: '/tabs',
+  //     data: {token: $window.localStorage.getItem('com.beer-tab'), user: user}
+  //   });
+  // };
 
   return {
     newIOU: newIOU,
-    recievePmt: recievePmt
+    // recievePmt: recievePmt
   };
 });
 
