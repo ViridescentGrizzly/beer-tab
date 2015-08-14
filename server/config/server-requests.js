@@ -93,6 +93,7 @@ exports.toTabs = function(req, res){
             if (err) return err;
           });
 
+          res.send(user);
           //this does the exact same thing, but from the receiver's perspective  
           User.findOne({ username: reciever })
             .exec(function(err, user) {
@@ -113,9 +114,8 @@ exports.toTabs = function(req, res){
                   //network object, with the one insede temp
                   User.update({_id: user._id}, {$set: {network: temp.network}}, function(err){
                     if (err) return err;
-                  });
-
-                  res.status(201).send(user).end();
+                  })
+                  res.status(201).end();
                 }
             });  
         }
