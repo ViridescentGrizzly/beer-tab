@@ -12,6 +12,7 @@ angular.module('beer-tab.services', [])
   };
  
   authService.signup = function(credentials) {
+    console.log('cred:', credentials);
     return $http
       .post('/signup', credentials)
       .then(function (resp) {
@@ -54,7 +55,6 @@ angular.module('beer-tab.services', [])
     recievePmt: recievePmt
   };
 });
-
 
 
 

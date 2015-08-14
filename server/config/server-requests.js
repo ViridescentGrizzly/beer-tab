@@ -39,8 +39,8 @@ exports.loginUser = function(req, res) {
 
   User.findOne({ username: username })
     .exec(function(err, user) {
+
       if (!user) {
-        console.log('Error: User not found');
         res.status(418).end();
       } else {
         var savedPassword = user.password;
@@ -60,7 +60,7 @@ exports.loginUser = function(req, res) {
   });
 };
 
-//in this function we update the network attr. of both, sender and receiver
+
 exports.toTabs = function(req, res){
   //Here we distribute the data we received from the request
   var reciever = req.body.user;
