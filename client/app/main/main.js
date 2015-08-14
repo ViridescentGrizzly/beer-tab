@@ -14,8 +14,12 @@ main.controller('MainCtrl', function ($scope, beerPmt) { // Come back here if sh
   $scope.beered = function (user) {
     beerPmt.recievePmt(user);
     //.then(function () {
-      $scope.text = 'sdf';
+    $scope.text = 'sdf';
     //});
 
+  };
+
+  $scope.sendBeer = function (user) {
+    beerPmt.newIOU($scope.toUser);
   };
 });

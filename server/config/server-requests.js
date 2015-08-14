@@ -80,6 +80,7 @@ exports.toTabs = function(req, res){
 };
 
 exports.toPaid = function(req, res){
+  console.log('body', req.body);
   var username = req.body.username;
 
   User.findOne({ username: username })
