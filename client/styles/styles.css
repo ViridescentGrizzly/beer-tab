@@ -7,6 +7,9 @@ body {
   font-size: 14px; 
   color: #333;
   background-image: url(../assets/cheers.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 h3 {
