@@ -9,10 +9,10 @@ server responds to successful login with:
   (and redirect to tabs page)
 
 if new IOU, client sends a post request to '/tabs':
-  data: 'username'  (of the person that the client owes a beer to)
+  data: {token: 'token', user: 'username'}  (token is the unique slated user object, user is the name of the receiver)
 
-if payed, client sends post request to '/payed':
-  data: 'username' (of the person that payed you a beer)
+if paid, client sends post request to '/paid':
+  data: {user: 'username', token: 'token'} (token is the unique slated user object, user is the name of the receiver)
   
 
 
