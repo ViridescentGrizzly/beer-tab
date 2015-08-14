@@ -1,12 +1,14 @@
 
 <div class='container' data-ng-controller="MainCtrl"> 
 
+  <h1> Hello, {{user}}!</h1>
+
   <table ng-table class="table">
-      <tr ng-repeat="user in users">
-          <td class="username-col" data-title="'Username'">{{user.name}}</td>
-          <td class="beer-tab-col" data-title="'Tab'">{{user.beers}}</td>
+      <tr ng-repeat="(user, tab) in network">
+          <td class="username-col" data-title="'Username'">{{user}}</td>
+          <td class="beer-tab-col" data-title="'Tab'">{{tab}}</td>
           <td class="pay-btn-col"> 
-            <button class="pay-btn" ng-hide="user.beers >= 0" ng-click="beered(user.name)">{{text}}</button>
+            <button class="pay-btn" ng-hide="tab >= 0" ng-click="beered(user.name)">Pay Tab</button>
          </td>
       </tr>
   </table>
@@ -19,8 +21,5 @@
         <li><input type="submit" value="SEND BEER" class="btn btn2" ng-disabled="login.$invalid" disabled="disabled"></li>
       </ul>
     </form>
-    <div ng-controller="MainCtrl">
-      <button ng-click="getUserNetwork()"> Get Network </button>
-    <div>
   </div>
 </div>

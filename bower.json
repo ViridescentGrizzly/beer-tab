@@ -32,6 +32,7 @@
     "angular": "~1.4.3",
     "bootstrap": "~3.3.5",
     "angular-ui-router": "~0.2.15",
-    "ng-table": "~0.8.3"
+    "ng-table": "~0.8.3",
+    "angular-jwt": "~0.0.9"
   }
 }
