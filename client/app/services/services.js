@@ -32,7 +32,6 @@ angular.module('beer-tab.services', [])
   return authService;
 })
 
-
 .factory('getTable', function ($window, $http) {
   
   var getTable = function (user) {
@@ -53,8 +52,6 @@ angular.module('beer-tab.services', [])
   };
 })
 
-
-
 .factory('beerPmt', function ($window, $http) {
   
   var newIOU = function (user) {
@@ -68,6 +65,7 @@ angular.module('beer-tab.services', [])
         return resp.data;
     });
   };
+
 
 
   return {
