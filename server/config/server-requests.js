@@ -66,7 +66,8 @@ exports.toTabs = function(req, res){
   var reciever = req.body.user;
   //since we got a token we need to decode it first
   var decoded = jwt.decode(req.body.token, 'argleDavidBargleRosson');
-  var sender = decoded.username; 
+  var sender = decoded.username;
+  var temp;
   //This query finds the sender in the db
   User.findOne({ username: sender })
     .exec(function(err, user) {
@@ -75,6 +76,7 @@ exports.toTabs = function(req, res){
         res.status(500).end();
       } else {
 
+              console.log('orignal', user.network)
               // if user exists, check the session's username
               // var token = jwt.encode(user, 'argleDavidBargleRosson');
               // var decoded = jwt.decode(token, 'argleDavidBargleRosson');
@@ -83,10 +85,18 @@ exports.toTabs = function(req, res){
           //if the receiver is on the network of the sender, the number is incremented 
           if(user.network.hasOwnProperty(reciever)){
             user.network[reciever]++;
+            temp = user;
+
           } else {
             //otherwise, we create the relationship
             user.network[reciever] = 1;
+            temp = user;
           }
+          console.log('mod1', user.network) 
+          User.update({_id: user._id}, {$set: {network: temp.network}}, function(err){
+            if (err) return err;
+          });
+
           //this does the exact same thing, but from the receiver's perspective  
           User.findOne({ username: reciever })
             .exec(function(err, user) {
@@ -94,13 +104,21 @@ exports.toTabs = function(req, res){
                 console.log('attempted to route to tabs, but person not found!');
                 res.status(500).end();
               } else {
+                console.log('orignal2', user.network)
                   //instead of incrementing, the number decreases
                   if(user.network.hasOwnProperty(sender)){
                     user.network[sender]--;
+                    temp = user;
                   } else {
                     //the default in this case is negative
                     user.network[sender] = -1;
+                    temp = user;
                   }
+                  console.log('mod2', user.network)
+
+                  User.update({_id: user._id}, {$set: {network: temp.network}}, function(err){
+                    if (err) return err;
+                  });
 
                   res.status(201).send(user).end();
                 }
