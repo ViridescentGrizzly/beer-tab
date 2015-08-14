@@ -32,20 +32,20 @@ angular.module('beer-tab.services', [])
 })
 
 
-.factory('beerPmt', function ($http) {
+.factory('beerPmt', function ($window, $http) {
   var newIOU = function (user) {
     return $http({
       method: 'POST',
       url: '/tabs',
-      data: user
+      data: {token: $window.localStorage.getItem('com.beer-tab'), user: user}
     });
   };
 
   var recievePmt = function (user) {
     return $http({
       method: 'POST',
-      url: '/payed',
-      data: user
+      url: '/paid',
+      data: {token: $window.localStorage.getItem('com.beer-tab'), user: user}
     });
   };
 
