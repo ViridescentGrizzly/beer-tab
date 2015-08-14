@@ -23,7 +23,6 @@ app.get('/login', function (req, res) {
 app.post('/login', handler.loginUser);
 app.post('/signup', handler.signupUser);
 app.post('/tabs', handler.toTabs);
-app.post('/paid', handler.toPaid);
 
 // Export server app instance
 module.exports = app;
