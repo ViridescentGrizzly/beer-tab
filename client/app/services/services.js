@@ -42,6 +42,7 @@ angular.module('beer-tab.services', [])
       data: {token: $window.localStorage.getItem('com.beer-tab'), user: user}
     })
     .then(function (resp) {
+      console.log(resp.data);
         return resp.data;
     });
   };
