@@ -63,14 +63,27 @@ exports.loginUser = function(req, res) {
 
 exports.toTabs = function(req, res){
   //Here we distribute the data we received from the request
-  var reciever = req.body.user;
+  var receiver = req.body.user;
   //since we got a token we need to decode it first
   var decoded = jwt.decode(req.body.token, 'argleDavidBargleRosson');
   var sender = decoded.username;
   //we need a temporal variable to use the update method on the db.
   var temp;
-  //This query finds the sender in the db
-  User.findOne({ username: sender })
+
+
+  User.findOne({ username: 'kaj' })
+    .exec(function(err, user){
+      if(err){
+        console.log('error: ',err)
+        res.status(500).end()
+      } else{
+        console.log(user);
+      }
+    });
+
+
+  //This query finds the receiver in the db
+  User.findOne({ username: receiver })
     .exec(function(err, user) {
       if(!user) {
         console.log('attempted to route to tabs, but person not found!');
@@ -78,12 +91,12 @@ exports.toTabs = function(req, res){
       } else {
 
           //if the receiver is on the network of the sender, the number is incremented 
-          if(user.network.hasOwnProperty(reciever)){
-            user.network[reciever]++;
+          if(user.network.hasOwnProperty(sender)){
+            user.network[sender]++;
 
           } else {
             //otherwise, we create the relationship
-            user.network[reciever] = 1;
+            user.network[sender] = 1;
           }
           //here we assign the entire user object to teh temp variable
           temp = user;
@@ -93,20 +106,19 @@ exports.toTabs = function(req, res){
             if (err) return err;
           });
 
-          res.send(user);
-          //this does the exact same thing, but from the receiver's perspective  
-          User.findOne({ username: reciever })
+          //this does the exact same thing, but from the sender's perspective  
+          User.findOne({ username: sender })
             .exec(function(err, user) {
               if(!user) {
                 console.log('attempted to route to tabs, but person not found!');
                 res.status(500).end();
               } else {
                   //instead of incrementing, the number decreases
-                  if(user.network.hasOwnProperty(sender)){
-                    user.network[sender]--;
+                  if(user.network.hasOwnProperty(receiver)){
+                    user.network[receiver]--;
                   } else {
                     //the default in this case is negative
-                    user.network[sender] = -1;
+                    user.network[receiver] = -1;
                   }
                   //here we assign the entire user object to teh temp variable
                   temp = user;
@@ -115,11 +127,11 @@ exports.toTabs = function(req, res){
                   User.update({_id: user._id}, {$set: {network: temp.network}}, function(err){
                     if (err) return err;
                   })
-                  res.status(201).end();
+                  //this sends the updated user to the client;
+                  res.status(201).send(user).end();
                 }
             });  
         }
+
     });
-
-
 };

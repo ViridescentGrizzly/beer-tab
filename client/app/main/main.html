@@ -15,7 +15,7 @@
   </table>
 
   <div class="login">
-    <form ng-submit="sendBeer()" name="send-beer" novalidate>
+    <form ng-submit="sendBeer(toUser)" name="send-beer" novalidate>
       <ul class="ul-list">
         <li class='center'>
           <div><input type="text" class="send-beer input" placeholder="I owe a beer to..." ng-model="toUser" ng-minlength="3" ng-maxlength="20" required><span class="icon"><i class="fa fa-user"></i></span></li>
