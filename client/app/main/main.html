@@ -4,12 +4,12 @@
   <h1> Hello, {{user}}!</h1>
 
   <table ng-table class="table">
-      <tr ng-repeat="(user, tab) in network">
-          <td class="username-col" data-title="'Username'">{{user}}</td>
-          <td class="beer-tab-col" data-title="'Tab'">{{tab}}</td>
+      <tr ng-repeat="user in network | orderBy:'username'">
+          <td class="username-col" data-title="'Username'">{{user.username}}</td>
+          <td class="beer-tab-col" data-title="'Tab'">{{user.tab}}</td>
           <td class="pay-btn-col"> 
-            <button class="pay-btn" ng-hide="tab <= 0" ng-click="sendBeer(user)">Recieve</button>
-            <button class="pay-btn" ng-hide="tab > 0" ng-click="sendBeer(user)">Owe</button>
+            <button class="pay-btn" ng-hide="user.tab <= 0" ng-click="sendBeer(user.username)">Recieve</button>
+            <button class="pay-btn" ng-hide="user.tab > 0" ng-click="sendBeer(user.username)">Owe</button>
          </td>
       </tr>
   </table>

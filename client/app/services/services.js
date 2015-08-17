@@ -51,6 +51,22 @@ angular.module('beer-tab.services', [])
   return {
     newIOU: newIOU,
   };
+})
+.factory('util', function(){
+  var helper = {};
+  
+  helper.toArr = function (obj){
+    var temp = [];
+    for(var key in obj){
+      temp.push({
+        username: key,
+        tab: obj[key]
+      });
+    }
+    return temp;
+  };
+
+  return helper;
 });
 
 
