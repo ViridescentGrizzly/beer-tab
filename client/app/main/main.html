@@ -15,11 +15,12 @@
   </table>
 
   <div class="login">
+  <button class="pay-btn" ng-hide="clicked" ng-click="clicked = true; toUser = '';">Add friend...</button>
     <form ng-submit="sendBeer(toUser)" name="send-beer" novalidate>
-      <ul class="ul-list">
+      <ul class="ul-list" ng-show="clicked">
         <li class='center'>
           <div><input type="text" class="send-beer input" placeholder="I owe a beer to..." ng-model="toUser" ng-minlength="3" ng-maxlength="20" required><span class="icon"><i class="fa fa-user"></i></span></li>
-        <li><input type="submit" value="SEND BEER" class="btn btn2" ng-disabled="login.$invalid" disabled="disabled"></li>
+        <li><input type="submit" value="SEND BEER" class="btn btn2" ng-disabled="login.$invalid" disabled="disabled" ng-click="clicked = false;"></li>
       </ul>
     </form>
   </div>
