@@ -62,6 +62,34 @@ exports.loginUser = function(req, res) {
 };
 
 
+
+
+
+exports.getTable = function(req, res){
+  //Here we distribute the data we received from the request
+  var user = req.body.user;
+  //we need a temporal variable to use the update method on the db.
+  var temp;
+
+  //This query finds the receiver in the db
+  User.findOne({ username: user })
+    .exec(function(err, user) {
+      if(!user) {
+        console.log('attempted to route to tabs, but person not found!');
+        res.status(500).end();
+      } else {
+        res.status(201).send(user.network);
+      }
+
+    });
+};
+
+
+
+
+
+
+
 exports.toTabs = function(req, res){
   //Here we distribute the data we received from the request
   var receiver = req.body.user;
@@ -114,8 +142,10 @@ exports.toTabs = function(req, res){
                   //We use the update method, here we replace the old
                   //network object, with the one insede temp
                   User.update({_id: user._id}, {$set: {network: temp.network}}, function(err){
-                    if (err) return err;
-                  })
+                    if (err) {
+                      return err;
+                    }
+                  });
                   //this sends the updated user to the client;
                   res.status(201).send(user);
                 }
