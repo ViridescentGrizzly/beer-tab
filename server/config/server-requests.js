@@ -98,59 +98,65 @@ exports.toTabs = function(req, res){
   var sender = decoded.username;
   //we need a temporal variable to use the update method on the db.
   var temp;
+//this ensures that a user is unale to owe to itself
+if(receiver === sender){
+  console.log('You can\'t owe yourself!');
+  res.status(418).end();
+} else if(!receiver){ //this prevents the server from processing an undefined value
+  console.log('Sending beer to undefined');
+  res.status(500).end();
+} else {
+    //This query finds the receiver in the db
+    User.findOne({ username: receiver })
+      .exec(function(err, user) {
+        if(!user) {
+          console.log('attempted to route to tabs, but person not found!');
+          res.status(500).end();
+        } else {
 
-  //This query finds the receiver in the db
-  User.findOne({ username: receiver })
-    .exec(function(err, user) {
-      if(!user) {
-        console.log('attempted to route to tabs, but person not found!');
-        res.status(500).end();
-      } else {
+            //if the receiver is on the network of the sender, the number is incremented 
+            if(user.network.hasOwnProperty(sender)){
+              user.network[sender]++;
 
-          //if the receiver is on the network of the sender, the number is incremented 
-          if(user.network.hasOwnProperty(sender)){
-            user.network[sender]++;
+            } else {
+              //otherwise, we create the relationship
+              user.network[sender] = 1;
+            }
+            //here we assign the entire user object to teh temp variable
+            temp = user;
+            //We use the update method, here we replace the old
+            //network object, with the one insede temp
+            User.update({_id: user._id}, {$set: {network: temp.network}}, function(err){
+              if (err) return err;
+            });
 
-          } else {
-            //otherwise, we create the relationship
-            user.network[sender] = 1;
-          }
-          //here we assign the entire user object to teh temp variable
-          temp = user;
-          //We use the update method, here we replace the old
-          //network object, with the one insede temp
-          User.update({_id: user._id}, {$set: {network: temp.network}}, function(err){
-            if (err) return err;
-          });
-
-          //this does the exact same thing, but from the sender's perspective  
-          User.findOne({ username: sender })
-            .exec(function(err, user) {
-              if(!user) {
-                console.log('attempted to route to tabs, but person not found!');
-                res.status(500).end();
-              } else {
-                  //instead of incrementing, the number decreases
-                  if(user.network.hasOwnProperty(receiver)){
-                    user.network[receiver]--;
-                  } else {
-                    //the default in this case is negative
-                    user.network[receiver] = -1;
-                  }
-                  //here we assign the entire user object to teh temp variable
-                  temp = user;
-                  //We use the update method, here we replace the old
-                  //network object, with the one insede temp
-                  User.update({_id: user._id}, {$set: {network: temp.network}}, function(err){
-                    if (err) {
-                      return err;
+            //this does the exact same thing, but from the sender's perspective  
+            User.findOne({ username: sender })
+              .exec(function(err, user) {
+                if(!user) {
+                  console.log('attempted to route to tabs, but person not found!');
+                  res.status(500).end();
+                } else {
+                    //instead of incrementing, the number decreases
+                    if(user.network.hasOwnProperty(receiver)){
+                      user.network[receiver]--;
+                    } else {
+                      //the default in this case is negative
+                      user.network[receiver] = -1;
                     }
-                  });
-                  //this sends the updated user to the client;
-                  res.status(201).send(user);
-                }
-            });  
-        }
+                    //here we assign the entire user object to teh temp variable
+                    temp = user;
+                    //We use the update method, here we replace the old
+                    //network object, with the one insede temp
+                    User.update({_id: user._id}, {$set: {network: temp.network}}, function(err){
+                      if (err) return err;
+                    })
+                    //this sends the updated user to the client;
+                    res.status(201).send(user);
+                  }
 
-    });
+              });  
+          }
+      });
+  }
 };
