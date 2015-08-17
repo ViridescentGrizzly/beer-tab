@@ -70,18 +70,6 @@ exports.toTabs = function(req, res){
   //we need a temporal variable to use the update method on the db.
   var temp;
 
-
-  User.findOne({ username: 'kaj' })
-    .exec(function(err, user){
-      if(err){
-        console.log('error: ',err)
-        res.status(500).end()
-      } else{
-        console.log(user);
-      }
-    });
-
-
   //This query finds the receiver in the db
   User.findOne({ username: receiver })
     .exec(function(err, user) {
@@ -128,7 +116,7 @@ exports.toTabs = function(req, res){
                     if (err) return err;
                   })
                   //this sends the updated user to the client;
-                  res.status(201).send(user).end();
+                  res.status(201).send(user);
                 }
             });  
         }
