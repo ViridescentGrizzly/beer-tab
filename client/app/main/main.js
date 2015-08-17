@@ -12,6 +12,8 @@ main.controller('MainCtrl', function ($scope, $window, beerPmt, jwtHelper, AuthS
   // Pull username from token to display on main page
   $scope.user = $scope.decodedJwt.username;
 
+
+
   $scope.sendBeer = function (user) {
     console.log('sendBeer called', user);
     if(AuthService.isAuth()) {

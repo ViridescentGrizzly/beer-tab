@@ -47,17 +47,9 @@ angular.module('beer-tab.services', [])
     });
   };
 
-  // var recievePmt = function (user) {
-  //   return $http({
-  //     method: 'POST',
-  //     url: '/tabs',
-  //     data: {token: $window.localStorage.getItem('com.beer-tab'), user: user}
-  //   });
-  // };
 
   return {
     newIOU: newIOU,
-    // recievePmt: recievePmt
   };
 });
 
