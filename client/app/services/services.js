@@ -33,6 +33,28 @@ angular.module('beer-tab.services', [])
 })
 
 
+.factory('getTable', function ($window, $http) {
+  
+  var getTable = function (user) {
+    return $http({
+      method: 'POST',
+      url: '/table',
+      data: {user: user}
+    })
+    .then(function (resp) {
+      console.log(resp.data);
+      return resp.data;
+    });
+  };
+
+
+  return {
+    getTable: getTable,
+  };
+})
+
+
+
 .factory('beerPmt', function ($window, $http) {
   
   var newIOU = function (user) {
