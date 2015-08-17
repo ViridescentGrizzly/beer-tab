@@ -13,7 +13,8 @@ exports.signupUser = function(req, res) {
       if (!user) {
         var newUser = new User({
           username: username,
-          password: password
+          password: password,
+          network: {}
         });
 
         newUser.save(function(err, newUser) {
