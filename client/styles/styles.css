@@ -124,7 +124,7 @@ input {
   margin-left: 0px; 
 }
 #login:checked~div .form-header li:nth-child(1),#signup:checked~div .form-header li:nth-child(2) {
-  background: brown;
+  background: #09C;
   color: #fff;
 }
 
