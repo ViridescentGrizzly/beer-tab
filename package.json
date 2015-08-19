@@ -6,6 +6,9 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/ViridescentGrizzly/beer-tab.git"
+  },"scripts": {
+    "start": "node server/server.js",
+    "postinstall": "grunt build"
   },
   "license": "MIT",
   "author": "Viridescent Grizzly",
