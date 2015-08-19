@@ -21,7 +21,7 @@ exports.signupUser = function(req, res) {
           if (err) {
             res.status(418).end();
           } else {
-            var token = jwt.encode(user, 'argleDavidBargleRosson');
+            var token = jwt.encode(newUser, 'argleDavidBargleRosson');
             res.json({token: token});
             console.log('Success: Account added to database.');
             res.status(201).end();
