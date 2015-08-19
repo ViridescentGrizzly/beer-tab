@@ -22,7 +22,6 @@ main.controller('MainCtrl', function ($scope, $window, beerPmt, jwtHelper, AuthS
   // new friend form
   $scope.clicked = false;
 
-
   //This function sennds a request to the server, it returns 
   //the updated information
   $scope.sendBeer = function (user) {

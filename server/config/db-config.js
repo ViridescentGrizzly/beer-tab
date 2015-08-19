@@ -3,8 +3,9 @@
 var BluebirdPromise = require('bluebird');
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
+var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/beer-tab-db';
 
-mongoose.connect('mongodb://localhost:27017/beer-tab-db');
+mongoose.connect(mongoURI);
 
 // Define user schema
 var schema = mongoose.Schema ({

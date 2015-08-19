@@ -7,6 +7,10 @@
     "type": "git",
     "url": "git://github.com/ViridescentGrizzly/beer-tab.git"
   },
+  "scripts": {
+    "start": "node server/server.js",
+    "postinstall": "bash ./post_install.sh"
+  },
   "license": "MIT",
   "author": "Viridescent Grizzly",
   "contributors": [
@@ -43,8 +47,20 @@
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^2.9.34",
     "body-parser": "^1.13.3",
+    "bower": "^1.4.1",
     "express": "^4.13.3",
+    "grunt": "^0.4.5",
+    "grunt-cli": "0.1.13",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-cssmin": "^0.13.0",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha-test": "^0.12.7",
+    "grunt-nodemon": "^0.4.0",
+    "grunt-shell": "^1.1.2",
     "jwt-simple": "^0.3.0",
+    "mocha": "^2.2.5",
     "mongodb": "^2.0.40",
     "mongoose": "^4.1.2",
     "morgan": "^1.6.1",
